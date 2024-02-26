@@ -75,7 +75,7 @@ const Footer = () => {
             class="w-full p-4 text-center"
             >
             Designed and Developed by : 
-            <a class="text-whitehite underline" href="#"
+            <a class="text-whitehite underline" href="https://www.linkedin.com/in/techiemanish/"
               >techiemanish</a>
           </div>
         </footer>
