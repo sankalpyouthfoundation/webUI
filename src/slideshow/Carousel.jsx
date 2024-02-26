@@ -1,59 +1,54 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-function Carousel() {
+const images = [
+    'https://res.cloudinary.com/decjzcxb5/image/upload/v1708880445/IMG20230827110205_d5exm6.jpg',
+    'https://res.cloudinary.com/decjzcxb5/image/upload/v1708880390/IMG_0599_ccgdxg.jpg',
+    'https://res.cloudinary.com/decjzcxb5/image/upload/v1708880436/IMG_0613_vc56c4.jpg',
+    'https://res.cloudinary.com/decjzcxb5/image/upload/v1708880416/IMG_20230924_122411_trcs2s.jpg',
+    'https://res.cloudinary.com/decjzcxb5/image/upload/v1708880451/IMG20230827105753_zvkdh9.jpg',
+  ];
+
+const Carousel = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const goToPrevious = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const goToNext = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
   return (
-    <div id="default-carousel" class="relative w-full" data-carousel="slide">
-    {/* <!-- Carousel wrapper --> */}
-    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-         {/* <!-- Item 1 --> */}
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-1.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
-        </div>
-        {/* <!-- Item 2 --> */}
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-2.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
-        </div>
-        {/* <!-- Item 3 --> */}
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-3.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
-        </div>
-        {/* <!-- Item 4 --> */}
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-4.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
-        </div>
-        {/* <!-- Item 5 --> */}
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-5.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
-        </div>
+    <div className="relative w-full md:h-[600px] h-[250px] overflow-hidden">
+      {images.map((image, index) => (
+        <img
+          key={index}
+          src={image}
+          alt={`Slide ${index + 1}`}
+          className={`absolute top-0 left-0 w-full h-full transition-opacity duration-500 ${
+            index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
+      ))}
+      <button
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-1 rounded-full"
+        onClick={goToPrevious}
+      >
+        <svg class="md:h-8 md:w-8 w-6 h-6 text-white"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="11 7 6 12 11 17" />  <polyline points="17 7 12 12 17 17" /></svg>
+      </button>
+      <button
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-1 rounded-full"
+        onClick={goToNext}
+      >
+        <svg class="md:h-8 md:w-8 w-6 h-6 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <polyline points="13 17 18 12 13 7" />  <polyline points="6 17 11 12 6 7" /></svg>
+      </button>
     </div>
-    {/* <!-- Slider indicators --> */}
-    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
-    </div>
-    {/* <!-- Slider controls --> */}
-    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4"/>
-            </svg>
-            <span class="sr-only">Previous</span>
-        </span>
-    </button>
-    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4"/>
-            </svg>
-            <span class="sr-only">Next</span>
-        </span>
-    </button>
-</div>
+  );
+};
 
-  )
-}
-
-export default Carousel
+export default Carousel;
