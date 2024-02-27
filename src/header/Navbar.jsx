@@ -48,12 +48,12 @@ function Navbar(props) {
           } md:flex flex-row mt-0 md:space-x-8 text-lg md:text-sm font-medium text-center bg-gray-50 dark:bg-gray-700 py-3 px-4 mx-auto"`}
         >
           <li>
-            <Link
-              to={"/"}
+            <a
+              href='#initiative'
               className="text-gray-900 dark:text-white hover:underline"
             >
               Our Initiatives
-            </Link>
+            </a>
           </li>
           <li>
             <a
@@ -73,7 +73,7 @@ function Navbar(props) {
           </li>
           <li>
             <a
-              href="/"
+              href="#about"
               className="text-gray-900 dark:text-white hover:underline"
             >
               About us
