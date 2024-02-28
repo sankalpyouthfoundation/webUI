@@ -81,7 +81,7 @@ function Navbar(props) {
           </li>
           <li>
             <a
-              href="/"
+              href="#contact"
               className="text-gray-900 dark:text-white hover:underline"
             >
               Contact us

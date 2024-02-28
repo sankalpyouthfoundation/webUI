@@ -1,6 +1,7 @@
 // import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import AboutSection from './aboutus/AboutSection';
+import Contact from './contact/Contact';
 import Footer from './footer/Footer';
 import Navbar from './header/Navbar';
 import OurInitiative from './ourInitiative/OurInitiative';
@@ -15,6 +16,7 @@ function App() {
     <Status/>
     <OurInitiative/>
     <AboutSection/>
+    <Contact/>
     <Footer/>
   </>
   );
