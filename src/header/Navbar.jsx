@@ -65,7 +65,7 @@ function Navbar(props) {
           </li>
           <li>
             <a
-              href="/"
+              href="#team"
               className="text-gray-900 dark:text-white hover:underline"
             >
               Our Team

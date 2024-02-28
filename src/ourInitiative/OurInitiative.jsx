@@ -3,7 +3,7 @@ import { TwitterTweetEmbed } from 'react-twitter-embed';
 
 const OurInitiative = () => {
   return (
-    <div className="container mx-auto text-center bg-gray-50" id="initiative">
+    <div className="container mx-auto text-center bg-gray-50 p-5" id="initiative">
       <h2 className="text-3xl md:text-3xl font-bold mb-4 text-blue-700">Our Initiative</h2>
       <div className="lg:flex lg:justify-center lg:items-start">
         <div className="lg:w-1/2 lg:pr-8">
