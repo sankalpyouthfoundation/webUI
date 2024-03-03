@@ -2,10 +2,11 @@ import React from "react";
 
 const MemberCard = ({ member }) => {
   return (
-    <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 p-4">
+    // <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 p-4">
+    <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-4">
       <div className="bg-white rounded-lg shadow-lg overflow-hidden">
         <img
-          className="w-full h-64 lg:h-40 object-cover object-center"
+          className="w-full h-64 lg:h-50 object-cover object-center"
           src={member.image}
           alt={member.name}
         />

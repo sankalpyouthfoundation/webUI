@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 
 const images = [
-    'https://res.cloudinary.com/decjzcxb5/image/upload/v1708880445/IMG20230827110205_d5exm6.jpg',
-    'https://res.cloudinary.com/decjzcxb5/image/upload/v1708880390/IMG_0599_ccgdxg.jpg',
-    'https://res.cloudinary.com/decjzcxb5/image/upload/v1708880436/IMG_0613_vc56c4.jpg',
-    'https://res.cloudinary.com/decjzcxb5/image/upload/v1708880416/IMG_20230924_122411_trcs2s.jpg',
-    'https://res.cloudinary.com/decjzcxb5/image/upload/v1708880451/IMG20230827105753_zvkdh9.jpg',
+    'https://res.cloudinary.com/dvfarxhig/image/upload/v1709459511/syf/IMG20230827110205_hjm13y.jpg',
+    'https://res.cloudinary.com/dvfarxhig/image/upload/v1709459470/syf/IMG_20230813_120132_eggb7a.jpg',
+    'https://res.cloudinary.com/dvfarxhig/image/upload/v1709459469/syf/IMG_20230813_120331_clzktq.jpg',
+    'https://res.cloudinary.com/dvfarxhig/image/upload/v1709459507/syf/IMG_20230924_122411_tsh9u5.jpg',
+    'https://res.cloudinary.com/dvfarxhig/image/upload/v1709459469/syf/IMG_20230813_120248_xrwejl.jpg',
+    'https://res.cloudinary.com/dvfarxhig/image/upload/v1709460464/syf/IMG_20231113_123215_yusuxy.jpg',
+    'https://res.cloudinary.com/dvfarxhig/image/upload/v1709460463/syf/IMG_20231113_130156_1_vgjwjd.jpg',
+    'https://res.cloudinary.com/dvfarxhig/image/upload/v1709461094/syf/IMG_20231222_115918_jb4pmd.jpg',
   ];
 
 const Carousel = () => {

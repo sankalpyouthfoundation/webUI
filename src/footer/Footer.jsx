@@ -3,9 +3,19 @@ const Footer = () => {
         <footer
           class="flex flex-col items-center bg-gray-50 text-center mb-auto md:mb-0">
           <div class="container px-6 pt-6">
+            <div className="text-left">
+              <p><b>Sankalp Youth Foundation</b></p>
+              <p>Vill-Awalakot Kotabagh Jhulabazar</p>
+              {/* <p><b>Tehsil: </b> Kaladhungi</p>
+              <p><b>P.O:</b> Kotabagh</p> */}
+              <p>District: Nainital</p>
+              <p>Uttarakhand 263159</p>
+              <p><b>Mobile: </b>+91-9756353142</p>
+              <p><b>Email: </b>Sankalpyouthfoundation4@gmail.com</p>
+            </div>
             <div class="flex justify-center">
               <a
-                href="#!"
+                href="https://www.facebook.com/profile.php?id=61550551191828&mibextid=ZbWKwL"
                 type="button"
                 class="m-1 h-9 w-9 rounded-full border-2  uppercase leading-normal transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
                 data-te-ripple-init
@@ -76,7 +86,7 @@ const Footer = () => {
             >
             Designed and Developed by : 
             <a class="text-whitehite underline" href="https://www.linkedin.com/in/techiemanish/"
-              >techiemanish</a>
+              >Manish Tiwari</a>
           </div>
         </footer>
     );

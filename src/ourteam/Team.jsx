@@ -6,10 +6,10 @@ function Team() {
         { name: "Shubham Badhani", position: "President", image: "https://picsum.photos/200" },
         { name: "Himanshu Kapkoti", position: "Vice President", image: "https://picsum.photos/200" },
         { name: "Chandra Prakash", position: "Secretary", image: "https://picsum.photos/200" },
-        { name: "Deepak Badhani", position: "Member", image: "https://picsum.photos/200" },
-        { name: "Yogesh Sanwal", position: "Member", image: "https://picsum.photos/200" },
-        { name: "Shubham Pandey", position: "Member", image: "https://picsum.photos/200" },
-        { name: "Rajat Badhani", position: "Member", image: "https://picsum.photos/200" },
+        // { name: "Deepak Badhani", position: "Member", image: "https://picsum.photos/200" },
+        // { name: "Yogesh Sanwal", position: "Member", image: "https://picsum.photos/200" },
+        // { name: "Shubham Pandey", position: "Member", image: "https://picsum.photos/200" },
+        // { name: "Rajat Badhani", position: "Member", image: "https://picsum.photos/200" },
         // Add more members as needed
       ];
   return (

@@ -32,8 +32,8 @@ const StatusComponent = () => {
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/>
 </svg>
 
-            <p className="text-4xl font-bold">10+</p>
-            <p className="text-gray-500">Library Network</p>
+            <p className="text-4xl font-bold">20+</p>
+            <p className="text-gray-500">Weekly Library Activities</p>
           </div>
         </div>
       </div>
