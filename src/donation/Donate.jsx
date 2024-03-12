@@ -19,10 +19,10 @@ function Donate() {
         <div className="lg:w-1/3 px-4 lg:mt-20 lg:ml-20">
           <img src="https://res.cloudinary.com/dvfarxhig/image/upload/v1710263936/donateQRNoBG_hsvilu.svg" alt="Payment QR code" className="mx-auto" />
             <div className="flex justify-center">
-              <div className="flex flex-row" style={{width:150,height:80}}>
+              <div className="flex flex-row -ml-32" style={{width:50,height:50}}>
                 <img src="https://res.cloudinary.com/dvfarxhig/image/upload/v1710264896/paytm-icon_vx3uex.svg" alt="Paytm icon" className='mr-3' />
                 <img src="https://res.cloudinary.com/dvfarxhig/image/upload/v1710264896/phonepe-logo-icon_ye10f8.svg" alt="PhonePe logo" className='mr-3' />
-                <img src="https://res.cloudinary.com/dvfarxhig/image/upload/v1710264892/google-pay-icon_tdkugx.svg" alt="Google Pay icon" className='mr-3' />
+                <img src="https://res.cloudinary.com/dvfarxhig/image/upload/v1710264892/google-pay-icon_tdkugx.svg" alt="Google Pay icon" className='' />
               </div>
             </div>
         </div>
