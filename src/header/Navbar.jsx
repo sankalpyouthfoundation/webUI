@@ -38,6 +38,9 @@ function NavMenu(props) {
       <li>
         <a href="#contact" className="text-gray-900 dark:text-white hover:underline" onClick={handleLinkClick}>Contact us</a>
       </li>
+      <li>
+        <a href="#donate" className="text-gray-900 dark:text-white hover:underline" onClick={handleLinkClick}>Donate us</a>
+      </li>
     </ul>
   );
 }

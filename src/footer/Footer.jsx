@@ -85,8 +85,8 @@ const Footer = () => {
             class="w-full p-4 text-center"
             >
             Designed and Developed by : 
-            <a class="text-whitehite underline" href="https://www.facebook.com/itsmemanishtiwari/"
-              >Manish Tiwari</a>
+            <a class="text-whitehite no-underline" href="https://www.facebook.com/itsmemanishtiwari/"
+              >&nbsp;<b className="underline">Manish Tiwari</b></a>
           </div>
         </footer>
     );
