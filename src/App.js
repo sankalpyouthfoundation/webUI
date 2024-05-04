@@ -1,26 +1,22 @@
-// import { Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import AboutSection from './aboutus/AboutSection';
-import Contact from './contact/Contact';
-import Donate from './donation/Donate';
 import Footer from './footer/Footer';
-import Navbar from './header/Navbar';
-import OurInitiative from './ourInitiative/OurInitiative';
-// import Team from './ourteam/Team';
-import Carousel from './slideshow/Carousel';
-import Status from './status/Status';
+import Home from './home/Home';
+import Login from './login/Login';
+import Register from './login/Register';
+import Heading from './header/Heading';
 
 function App() {
   return (
   <>
-    <Navbar heading="Sankalp Youth Foundation"/>
-    <Carousel/>
-    <Status/>
-    <OurInitiative/>
-    <AboutSection/>
-    {/* <Team/> */}
-    <Donate/>
-    <Contact/>
+    {/* <Navbar heading="Sankalp Youth Foundation"/> */}
+    <Heading heading="Sankalp Youth Foundation"/>
+    <Routes>
+      <Route path= "*" element={<Home/>}/>
+      <Route path= "/" element={<Home/>}/>
+      <Route path= "/login" element={<Login/>}/>
+      <Route path= "/register" element={<Register/>}/>
+    </Routes>
     <Footer/>
   </>
   );
