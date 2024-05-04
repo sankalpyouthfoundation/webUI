@@ -10,7 +10,7 @@ function Heading(props) {
           <span className="self-center md:text-xl text-xl font-semibold whitespace-nowrap dark:text-white text-blue-700">{props.heading}</span>
         </Link>
       </div>
-      {/* <Link to={"/login"} className= "dark:text-white hover:underline font-medium float-right hidden md:inline text-blue-700">Login</Link> */}
+      <Link to={"/login"} className= "dark:text-white hover:underline font-medium float-right -mt-12 mr-3 hidden md:inline text-blue-700">Login</Link>
       </>
     );
   }

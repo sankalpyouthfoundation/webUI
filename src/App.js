@@ -9,7 +9,6 @@ import Heading from './header/Heading';
 function App() {
   return (
   <>
-    {/* <Navbar heading="Sankalp Youth Foundation"/> */}
     <Heading heading="Sankalp Youth Foundation"/>
     <Routes>
       <Route path= "*" element={<Home/>}/>
