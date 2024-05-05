@@ -39,7 +39,7 @@ function NavMenu(props) {
   };
 
   return (
-    <ul className={`${props.showMenu ? 'block' : 'hidden'} md:flex flex-row mt-0 md:space-x-8 text-lg md:text-sm font-medium text-center bg-gray-50 dark:bg-gray-700 py-3 px-4 mx-auto`}>
+    <ul className={`${props.showMenu ? 'block' : 'hidden'} md:flex flex-row mt-0 md:space-x-8 text-lg md:text-sm font-medium text-center bg-gray-50 dark:bg-gray-50 py-3 px-4 mx-auto`}>
       <li>
         <a href='#initiative' className="text-gray-900 dark:text-white hover:underline" onClick={handleLinkClick}>Our Initiatives</a>
       </li>

@@ -5,6 +5,7 @@ import Home from './home/Home';
 import Login from './login/Login';
 import Register from './login/Register';
 import Heading from './header/Heading';
+import AdminDashboard from './login/admin/AdminDashboard';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path= "/" element={<Home/>}/>
       <Route path= "/login" element={<Login/>}/>
       <Route path= "/register" element={<Register/>}/>
+      <Route path= "/admin" element={<AdminDashboard/>}/>
     </Routes>
     <Footer/>
   </>
