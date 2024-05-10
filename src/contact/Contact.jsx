@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import { getConfig } from '../env_config/activeConfig';
 
 function Contact() {
   const [data, setData] = useState({
@@ -19,13 +20,13 @@ function Contact() {
 
   const handleSubmit = (e) =>{
     e.preventDefault();
-    // window.scrollTo({ top: 0, behavior: "smooth" });
-    axios.post("https://sankalpyouthfoundation-api.onrender.com/api/contact", data)
+    const config = getConfig();
+    axios.post(config.contact_endpoint, data) 
       .then((res)=>{
           toast.success("Successfully submitted!!")
       })
       .catch(error=>console.error(error));
-  };
+};
 
   return (
     <div className='container h-screen w-screen ' id="contact">

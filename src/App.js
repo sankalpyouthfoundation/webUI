@@ -9,6 +9,7 @@ import AdminDashboard from './login/admin/AdminDashboard';
 import { Toaster } from 'react-hot-toast';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { getConfig } from './env_config/activeConfig';
 
 function App() {
   const [status, setstatus] = useState({
@@ -17,7 +18,8 @@ function App() {
   });
 
   useEffect(()=>{
-    axios.get("https://sankalpyouthfoundation-api.onrender.com/")
+    const config = getConfig();
+    axios.get(config.health_check)
     .then((res)=>{
     if(res.status === 200){
         setstatus({
