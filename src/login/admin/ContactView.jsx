@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 function ContactView() {
     const [apiData, setApiData] = useState(null);
+    const [view, setView] = useState(false);
     const navigate = useNavigate(); 
     const callBackendAPI = () => {
         const config = getConfig();
@@ -16,6 +17,7 @@ function ContactView() {
             .then((res) => {
                 toast.success("Successfully fetched!");
                 setApiData(res.data);
+                setView(true);
             })
             .catch((error) => {
                 console.error("Error fetching data:", error);
@@ -95,7 +97,7 @@ function ContactView() {
     return (
     <>
         <LoginWelcome/>
-        <Table dataSource={apiData} columns={columns} scroll={{ x: true }} footer={() => `Total ${apiData ? apiData.length : 0} records`}/>
+        {view ? <Table dataSource={apiData} columns={columns} scroll={{ x: true }} footer={() => `Total ${apiData ? apiData.length : 0} records`}/> :null}
         <center><button onClick={callBackendAPI} className="text-white m-2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Fetch Data</button></center>
         
     </>

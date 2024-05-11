@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ProfileCard from '../login/ProfileCard';
 
 function HomeMenuHeader(props) {
   const [showMenu, setShowMenu] = useState(false);
@@ -59,7 +60,7 @@ function NavMenu(props) {
         <a href="#donate" className="text-gray-900 dark:text-white hover:underline" onClick={handleLinkClick}>Donate us</a>
       </li>
       <li>
-        <Link to={"/login"} className="text-blue-700 dark:text-white hover:underline md:hidden">Login</Link>
+        {localStorage.getItem("syfLoggedInUser") !== null ? <ProfileCard/> : <Link to={"/login"} className="text-blue-700 dark:text-white hover:underlin md:hidden">Login</Link>}
       </li>
     </ul>
   );

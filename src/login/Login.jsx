@@ -50,6 +50,7 @@ function Login(props) {
                 localStorage.setItem("syfLoggedInUser", JSON.stringify(res.data));
                 setTimeout(()=>{localStorage.removeItem("syfLoggedInUser");navigate("/login");},900000);// 15min * 60sec * 1000ms = 90000ms
                 navigate("/admin",{replace: true})
+                window.location.reload();
                 //let data = JSON.parse(localStorage.getItem("loggedInUser"));
                 //let token = data.jwtToken.token;
                 //res.data.seller ? navigate(`/dashboard?${token}`) : navigate(`/profile?${token}`);

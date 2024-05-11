@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import ProfileCard from '../login/ProfileCard';
 
 function Heading(props) {
     return (
@@ -10,7 +11,9 @@ function Heading(props) {
           <span className="self-center md:text-xl text-xl font-semibold whitespace-nowrap dark:text-blue text-blue-700">{props.heading}</span>
         </Link>
       </div>
-      <Link to={"/login"} className= "dark:text-white hover:underline font-medium float-right -mt-12 mr-3 hidden md:inline text-blue-700">Login</Link>
+      {localStorage.getItem("syfLoggedInUser") !== null ? <div className="md:inline hidden"><ProfileCard/></div>
+      :<Link to={"/login"} className= "z-60 dark:text-white hover:underline font-medium float-right -mt-12 mr-3 hidden md:inline text-blue-700">Login</Link>
+      }
       </>
     );
   }
