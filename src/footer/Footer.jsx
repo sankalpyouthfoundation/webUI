@@ -1,4 +1,4 @@
-const Footer = () => {
+const Footer = (props) => {
     return (
         <footer
           class="flex flex-col items-center bg-gray-50 text-center mb-auto md:mb-0">
@@ -83,7 +83,7 @@ const Footer = () => {
           
           <div
             class="w-full p-4 text-center"
-            >
+            ><span className={props.webstat.css} title={props.webstat.tooltip}></span>
             Designed and Developed by : 
             <a class="text-whitehite no-underline" href="https://www.facebook.com/itsmemanishtiwari/"
               >&nbsp;<b className="underline">Manish Tiwari</b></a>

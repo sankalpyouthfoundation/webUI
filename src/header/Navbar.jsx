@@ -4,12 +4,15 @@ import { Link } from 'react-router-dom';
 // Heading component
 function Heading(props) {
   return (
+    <>
     <div className="flex items-center">
       <Link to={"/"} className="flex items-center">
         <img src="/logoicon.png" className="mr-1 h-12" alt="Logo"/>
         <span className="self-center md:text-xl text-xl font-semibold whitespace-nowrap dark:text-white text-blue-700">{props.heading}</span>
       </Link>
     </div>
+    <Link to={"/login"} className= "dark:text-white hover:underline font-medium float-right hidden md:inline text-blue-700">Login</Link>
+    </>
   );
 }
 
@@ -40,6 +43,9 @@ function NavMenu(props) {
       </li>
       <li>
         <a href="#donate" className="text-gray-900 dark:text-white hover:underline" onClick={handleLinkClick}>Donate us</a>
+      </li>
+      <li>
+      <Link to={"/login"} className="text-blue-700 dark:text-white hover:underline md:hidden">Login</Link>
       </li>
     </ul>
   );

@@ -1,0 +1,5 @@
+{
+    "health_check": "https://prod-sankalpyouthfoundation-api.onrender.com",
+    "contact_endpoint": "https://prod-sankalpyouthfoundation-api.onrender.com/api/contacts",
+    "login_endpoint": "https://prod-sankalpyouthfoundation-api.onrender.com/api/login"
+}
