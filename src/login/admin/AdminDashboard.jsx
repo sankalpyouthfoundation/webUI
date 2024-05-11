@@ -1,19 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import LoginWelcome from '../utils/LoginWelcome';
 
 
 function AdminDashboard(props) {
 //   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-//   const navigate = useNavigate();
+  const navigate = useNavigate();
 //   const handleDelete = () =>{
 //     setShowDeleteModal(true);
 //     //DeleteAccount();
 //   }
-//   let data = JSON.parse(localStorage.getItem("loggedInUser"));
-  if(true){
-    //props.handleLogin();
+  let data = JSON.parse(localStorage.getItem("syfLoggedInUser"));
+  if(null != data){
     return (
     <>
     <LoginWelcome/>
@@ -84,9 +83,9 @@ function AdminDashboard(props) {
     {/* {showDeleteModal && <DeleteConfirmModal closeModal={() => setShowDeleteModal(false)} />} */}
   </>)
   }
-//   else{
-//     navigate("/login");
-//   }
+  else{
+    navigate("/login");
+  }
 }
 
 export default AdminDashboard

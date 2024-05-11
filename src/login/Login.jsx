@@ -1,17 +1,20 @@
+import axios from 'axios';
 import React, { useEffect } from 'react'
 import { useState } from 'react';
-import { Link } from 'react-router-dom'
-// import Loader from '../utils/Loader';
+import toast from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom'
+import Loader from '../utils/Loader';
+import { getConfig } from '../env_config/activeConfig';
 
 function Login(props) {
-    // const [loading, setloading] = useState(false);
+    const [loading, setloading] = useState(false);
 
     useEffect(() => {
     //props.handleLogout();
     localStorage.clear();
     }, [])
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const [data, setData] = useState({
         "email": "",
@@ -24,42 +27,41 @@ function Login(props) {
         setData(newData);
     }
 
-    // const login = (e) =>{
-    //     window.scrollTo({ top: 0, behavior: "smooth" });
-    //     e.preventDefault();
-    //     setloading(true);
-    //     axios
-    //     .post("https://ecommerce-api-4fpf.onrender.com/api/login", {
-    //         "email":data.email,
-    //         "password" : data.password
-    //     })
-    //     .then((res)=>{
-    //         setloading(false);
-    //         if(res.data.status === "Unauthorized"){
-    //             toast.error(res.data.status + ", Incorrect Credentials")
-    //             navigate("/login", { replace: true });
-    //         }
-    //         else if(res.data.status === "No Account exist with this mail"){
-    //             toast.error(res.data.status + ". " + res.data.message);
-    //             navigate("/register",{replace: true})
-    //         }
-    //         else{
-    //             toast.success("Login Successful!")
-    //             localStorage.setItem("loggedInUser", JSON.stringify(res.data));
-    //             let data = JSON.parse(localStorage.getItem("loggedInUser"));
-    //             let token = data.jwtToken.token;
-    //             setTimeout(()=>{localStorage.removeItem("loggedInUser");navigate("/login");},900000);// 15min * 60sec * 1000ms = 90000ms
-    //             res.data.seller ? navigate(`/dashboard?${token}`) : navigate(`/profile?${token}`);
-                
-    //         }
-    //     }).catch(error=>console.error(error));
-    // }
-    //{loading ? <Loader/> : null}    
+    const config = getConfig();
+
+    const login = (e) =>{
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        e.preventDefault();
+        setloading(true);
+        axios
+        .post(config.login_endpoint, data)
+        .then((res)=>{
+            setloading(false);
+            if(res.data.status === "Unauthorized"){
+                toast.error(res.data.status + ", Incorrect Credentials")
+                navigate("/login", { replace: true });
+            }
+            else if(res.data.status === "No Account exist with this mail"){
+                toast.error(res.data.status + ". " + res.data.message);
+                navigate("/login",{replace: true}) //In future we will enable register then will change to /register
+            }
+            else{
+                toast.success("Login Successful!")
+                localStorage.setItem("syfLoggedInUser", JSON.stringify(res.data));
+                setTimeout(()=>{localStorage.removeItem("syfLoggedInUser");navigate("/login");},900000);// 15min * 60sec * 1000ms = 90000ms
+                navigate("/admin",{replace: true})
+                //let data = JSON.parse(localStorage.getItem("loggedInUser"));
+                //let token = data.jwtToken.token;
+                //res.data.seller ? navigate(`/dashboard?${token}`) : navigate(`/profile?${token}`);
+            }
+        }).catch(error=>console.error(error));
+    }
+        
   return (
     <>
-    
+    {loading ? <Loader/> : null}
     <div className="p-4 m-5 w-full max-w-sm mx-auto bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-    <form className="space-y-6" method='POST'>
+    <form className="space-y-6" method='POST' onSubmit={(e)=>{login(e)}} >
         <h5 className="text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h5>
         <div>
             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>

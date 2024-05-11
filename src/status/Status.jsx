@@ -22,7 +22,7 @@ const StatusComponent = () => {
           {/* Status Item 3 */}
           <div className="w-full sm:w-1/2 md:w-1/4 p-4 flex flex-col items-center">
           <svg class="h-20 w-20 text-blue-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M3 21h7v-3a2 2 0 0 1 4 0v3h7" />  <line x1="6" y1="21" x2="6" y2="12" />  <line x1="18" y1="21" x2="18" y2="12" />  <path d="M6 12h12a3 3 0 0 0 3 -3a9 8 0 0 1 -9 -6a9 8 0 0 1 -9 6a3 3 0 0 0 3 3" /></svg>
-            <p className="text-4xl font-bold">10+</p>
+            <p className="text-4xl font-bold">12+</p>
             <p className="text-gray-500">Villages Covered</p>
           </div>
   

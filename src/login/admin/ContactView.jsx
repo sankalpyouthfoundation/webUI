@@ -1,22 +1,27 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { getConfig } from '../../env_config/activeConfig';
 import LoginWelcome from '../utils/LoginWelcome';
 import toast from 'react-hot-toast';
 import { Table, Input, Button, Space } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
 function ContactView() {
-    const [data, setData] = useState(null);
-    useEffect(()=>{
+    const [apiData, setApiData] = useState(null);
+    const navigate = useNavigate(); 
+    const callBackendAPI = () => {
         const config = getConfig();
         axios.get(config.contact_endpoint)
-        .then((res)=>{
-            toast.success("Successfully fetched!")
-            setData(res.data);
-            // console.log(res.data);
-      })
-      }, []) 
+            .then((res) => {
+                toast.success("Successfully fetched!");
+                setApiData(res.data);
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+                // Handle error here
+            });
+    };
 
     const columns = [
         {
@@ -85,12 +90,21 @@ function ContactView() {
             key: 'city',
         },
     ];
-    
-  return (<>
-    <LoginWelcome/>
-    <Table dataSource={data} columns={columns} scroll={{ x: true }} footer={() => `Total ${data ? data.length : 0} records`}/>
+  let data = JSON.parse(localStorage.getItem("syfLoggedInUser"));
+  if(null != data){
+    return (
+    <>
+        <LoginWelcome/>
+        <Table dataSource={apiData} columns={columns} scroll={{ x: true }} footer={() => `Total ${apiData ? apiData.length : 0} records`}/>
+        <center><button onClick={callBackendAPI} className="text-white m-2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Fetch Data</button></center>
+        
     </>
-  )
+      )
+  }
+  else{
+    navigate("/login");
+  }
+  
 }
 
 export default ContactView;
