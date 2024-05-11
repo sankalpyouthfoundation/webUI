@@ -10,6 +10,7 @@ import { Toaster } from 'react-hot-toast';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { getConfig } from './env_config/activeConfig';
+import ContactView from './login/admin/ContactView';
 
 function App() {
   const [status, setstatus] = useState({
@@ -43,6 +44,7 @@ function App() {
       <Route path= "/login" element={<Login/>}/>
       <Route path= "/register" element={<Register/>}/>
       <Route path= "/admin" element={<AdminDashboard/>}/>
+      <Route path= "/viewcontacts" element={<ContactView/>}/>
     </Routes>
     <Footer webstat = {status}/>
   </>
