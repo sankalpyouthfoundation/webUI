@@ -41,7 +41,7 @@ function ProfileCard(props) {
       return (
         <>
         <div className="top-0 right-0 fixed m-5 mr-8" onClick={myfunc} ref={myref}>
-          <button  id="profileCard" type="button" className="flex mr-3 text-sm bg-white rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+          <button  id="profileCard" type="button" className="flex mr-3 text-sm bg-white rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
             <span className="sr-only">Open user menu</span>
             <svg className="h-6 w-6 text-blue-600"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />  <circle cx="12" cy="7" r="4" /></svg>
           </button>
@@ -49,9 +49,7 @@ function ProfileCard(props) {
           <div className={toggle}>
           
             <div className="py-3">
-            <Link to={"/admin"}><span className="block text-center text-sm text-blue-600 dark:text-white p-1">{"Admin!"}</span>
-              {/* <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400 p-1">name@flowbite.com</span> */}
-              </Link>
+            <Link to={"/admin"}><span className="block text-center text-sm text-blue-600 dark:text-white p-1">{"Admin!"}</span></Link>
             </div>
             
             <ul className="py-2" aria-labelledby="user-menu-button">
@@ -59,13 +57,13 @@ function ProfileCard(props) {
                 <Link to={"/manageusers"} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Manage users</Link>
               </li>
               <li>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Add Student</a>
+                <a href="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Add Student</a>
               </li>
               <li>
                 <Link to={"/viewcontacts"} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Messages</Link>
               </li>
               <li>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Find Student</a>
+                <a href="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Find Student</a>
               </li>
               <li>
                 <Link to={"/login"} onClick={handleLogout} className="block px-4 py-2 text-sm text-red-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</Link>
@@ -89,17 +87,16 @@ function ProfileCard(props) {
           <div className={toggle}>
             <div className="py-3">
             <Link to={"/profile"}><span className="block text-center text-sm text-blue-600 dark:text-white p-1">{data.firstname + " " + data.lastname}</span></Link>
-              {/* <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400 p-1">name@flowbite.com</span> */}
             </div>
             <ul className="py-2" aria-labelledby="user-menu-button">
               <li>
                 <Link to={"/personal"} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">My Profile</Link>
               </li>
               <li>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Orders</a>
+                <a href="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Orders</a>
               </li>
               <li>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Wishlist</a>
+                <a href="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Wishlist</a>
               </li>
               <li>
                 <Link to={"/address"} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Addresses</Link>

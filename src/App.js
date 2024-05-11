@@ -3,7 +3,7 @@ import './App.css';
 import Footer from './footer/Footer';
 import Home from './home/Home';
 import Login from './login/Login';
-import Register from './login/Register';
+// import Register from './login/Register';
 import Heading from './header/Heading';
 import AdminDashboard from './login/admin/AdminDashboard';
 import { Toaster } from 'react-hot-toast';
@@ -42,7 +42,7 @@ function App() {
       <Route path= "*" element={<Home/>}/>
       <Route path= "/" element={<Home/>}/>
       <Route path= "/login" element={<Login/>}/>
-      <Route path= "/register" element={<Register/>}/>
+      {/* <Route path= "/register" element={<Register/>}/> */}
       <Route path= "/admin" element={<AdminDashboard/>}/>
       <Route path= "/viewcontacts" element={<ContactView/>}/>
     </Routes>
