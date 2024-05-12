@@ -1,14 +1,19 @@
 import React, { useEffect, useRef } from 'react'
 import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate} from 'react-router-dom';
+import { logout } from '../redux/loginAction';
 
 function ProfileCard(props) {
     const myref = useRef();
 
-    const navigate = useLocation();
+    const navigate = useNavigate();
 
+    const dispatch = useDispatch();
     const handleLogout = () =>{
-      navigate("/login")
+      localStorage.removeItem("syfLoggedInUser")
+      dispatch(logout());
+      navigate("/",{replace: true})
     }
 
     let data = JSON.parse(localStorage.getItem("syfLoggedInUser"));
@@ -66,7 +71,7 @@ function ProfileCard(props) {
                 <a href="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Find Student</a>
               </li>
               <li>
-                <Link to={"/login"} onClick={handleLogout} className="block px-4 py-2 text-sm text-red-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</Link>
+                <p onClick={handleLogout} className="block px-4 py-2 text-sm text-red-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</p>
               </li>
             </ul>
           </div>

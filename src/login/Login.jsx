@@ -5,9 +5,16 @@ import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom'
 import Loader from '../utils/Loader';
 import { getConfig } from '../env_config/activeConfig';
+import { useDispatch } from 'react-redux';
+import { login } from '../redux/loginAction';
 
 function Login(props) {
     const [loading, setloading] = useState(false);
+
+    const dispatch = useDispatch(); 
+    const handleLogin = () => {
+      dispatch(login()); 
+    };
 
     useEffect(() => {
     //props.handleLogout();
@@ -29,7 +36,7 @@ function Login(props) {
 
     const config = getConfig();
 
-    const login = (e) =>{
+    const submitLogin = (e) =>{
         window.scrollTo({ top: 0, behavior: "smooth" });
         e.preventDefault();
         setloading(true);
@@ -49,8 +56,9 @@ function Login(props) {
                 toast.success("Login Successful!")
                 localStorage.setItem("syfLoggedInUser", JSON.stringify(res.data));
                 setTimeout(()=>{localStorage.removeItem("syfLoggedInUser");navigate("/login");},900000);// 15min * 60sec * 1000ms = 90000ms
+                handleLogin();
                 navigate("/admin",{replace: true})
-                window.location.reload();
+                // window.location.reload();
                 //let data = JSON.parse(localStorage.getItem("loggedInUser"));
                 //let token = data.jwtToken.token;
                 //res.data.seller ? navigate(`/dashboard?${token}`) : navigate(`/profile?${token}`);
@@ -62,7 +70,7 @@ function Login(props) {
     <>
     {loading ? <Loader/> : null}
     <div className="p-4 m-5 w-full max-w-sm mx-auto bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:border-gray-200">
-    <form className="space-y-6" method='POST' onSubmit={(e)=>{login(e)}} >
+    <form className="space-y-6" method='POST' onSubmit={(e)=>{submitLogin(e)}} >
         <h5 className="text-xl font-medium text-gray-900">Sign in to our platform</h5>
         <div>
             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">Your email</label>
