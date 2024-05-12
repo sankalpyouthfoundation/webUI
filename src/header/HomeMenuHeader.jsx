@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProfileCard from '../login/ProfileCard';
+import { useSelector } from 'react-redux';
 
 function HomeMenuHeader(props) {
   const [showMenu, setShowMenu] = useState(false);
@@ -33,6 +34,7 @@ function HomeMenuHeader(props) {
 }
 
 function NavMenu(props) {
+  const isLoggedIn = useSelector(state => state.login.isLoggedIn); 
   const handleLinkClick = () => {
     if (props.showMenu) {
       props.toggleMenu(); // Close the menu
@@ -60,7 +62,10 @@ function NavMenu(props) {
         <a href="#donate" className="text-gray-900 dark:text-black hover:underline" onClick={handleLinkClick}>Donate us</a>
       </li>
       <li>
-        {localStorage.getItem("syfLoggedInUser") !== null ? <ProfileCard/> : <Link to={"/login"} className="text-blue-700 dark:text-black hover:underlin md:hidden">Login</Link>}
+      {isLoggedIn ? 
+      (
+        <ProfileCard/>
+      ) : <Link to={"/login"} className="text-blue-700 dark:text-black hover:underlin md:hidden">Login</Link>}
       </li>
     </ul>
   );
