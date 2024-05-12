@@ -2,8 +2,10 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { getConfig } from '../env_config/activeConfig';
+import Loader from '../utils/Loader';
 
 function Contact() {
+  const [loading, setloading] = useState(false);
   const [data, setData] = useState({
     firstname: "",
     lastname: "",
@@ -19,10 +21,12 @@ function Contact() {
   };
 
   const handleSubmit = (e) =>{
+    setloading(true);
     e.preventDefault();
     const config = getConfig();
     axios.post(config.contact_endpoint, data) 
       .then((res)=>{
+          setloading(false);
           toast.success("Successfully submitted!!")
       })
       .catch(error=>console.error(error));
@@ -60,6 +64,7 @@ function Contact() {
             <label htmlFor="city" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Your City</label>
           </div>
         </div>
+        {loading ? <div className="mb-5 md:m-2"><Loader/></div> : null}
         <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
       </form>
     </div>
