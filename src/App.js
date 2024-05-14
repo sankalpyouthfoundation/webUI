@@ -12,6 +12,7 @@ import axios from 'axios';
 import { getConfig } from './env_config/activeConfig';
 import ContactView from './login/admin/ContactView';
 import Competition from './login/admin/Competition';
+import StudentRegistration from './login/admin/StudentRegistration';
 
 function App() {
   const [status, setstatus] = useState({
@@ -47,6 +48,7 @@ function App() {
       <Route path= "/admin" element={<AdminDashboard/>}/>
       <Route path= "/viewcontacts" element={<ContactView/>}/>
       <Route path= "/viewcompetitions" element={<Competition/>}/>
+      <Route path= "/registration" element={<StudentRegistration/>}/>
     </Routes>
     <Footer webstat = {status}/>
   </>

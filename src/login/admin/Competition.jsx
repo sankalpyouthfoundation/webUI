@@ -3,6 +3,8 @@ import axios from 'axios';
 import { getConfig } from '../../env_config/activeConfig';
 import toast from 'react-hot-toast';
 import LoginWelcome from '../utils/LoginWelcome';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Competition = () => {
     const [data, setData] = useState({
@@ -12,9 +14,11 @@ const Competition = () => {
     const [competitions, setCompetitions] = useState([]);
     const [deleteId, setDeleteId] = useState(null);
     const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-    const [isAddFormVisible, setIsAddFormVisible] = useState(false); // State to control visibility of add competition form
+    const [isAddFormVisible, setIsAddFormVisible] = useState(false); 
+    const isLoggedIn = useSelector(state => state.login.isLoggedIn); 
 
     const config = getConfig();
+    const navigate = useNavigate();
 
     const fetchCompetitions = useCallback(() => {
         axios.get(config.competition_endpoint)
@@ -70,7 +74,7 @@ const Competition = () => {
                 setDeleteId(null);
             });
     };
-
+    if(isLoggedIn){
     return (
         <>
         <LoginWelcome/>
@@ -140,7 +144,10 @@ const Competition = () => {
             )}
         </div>
         </>
-    );
+    );}
+    else{
+        navigate("/login");
+      }
 };
 
 export default Competition;
