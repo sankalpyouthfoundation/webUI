@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import LoginWelcome from '../utils/LoginWelcome';
+import { useSelector } from 'react-redux';
 
 
 function AdminDashboard(props) {
   const navigate = useNavigate();
 
-  let data = JSON.parse(localStorage.getItem("syfLoggedInUser"));
-  if(null != data){
+  const isLoggedIn = useSelector(state => state.login.isLoggedIn); 
+  if(isLoggedIn){
     return (
     <>
     <LoginWelcome/>

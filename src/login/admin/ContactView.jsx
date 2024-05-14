@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import { Table, Input, Button, Space } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function ContactView() {
     const [apiData, setApiData] = useState(null);
@@ -91,9 +92,9 @@ function ContactView() {
             dataIndex: 'city',
             key: 'city',
         },
-    ];
-  let data = JSON.parse(localStorage.getItem("syfLoggedInUser"));
-  if(null != data){
+    ]; 
+    const isLoggedIn = useSelector(state => state.login.isLoggedIn); 
+    if(isLoggedIn){
     return (
     <>
         <LoginWelcome/>

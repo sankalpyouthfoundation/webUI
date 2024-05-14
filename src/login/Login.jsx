@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import Loader from '../utils/Loader';
 import { getConfig } from '../env_config/activeConfig';
 import { useDispatch } from 'react-redux';
-import { login } from '../redux/loginAction';
+import { login, logout } from '../redux/loginAction';
 
 function Login(props) {
     const [loading, setloading] = useState(false);
@@ -55,7 +55,7 @@ function Login(props) {
             else{
                 toast.success("Login Successful!")
                 localStorage.setItem("syfLoggedInUser", JSON.stringify(res.data));
-                setTimeout(()=>{localStorage.removeItem("syfLoggedInUser");navigate("/login");},900000);// 15min * 60sec * 1000ms = 90000ms
+                setTimeout(()=>{localStorage.removeItem("syfLoggedInUser");navigate("/login");dispatch(logout())},900000);// 15min * 60sec * 1000ms = 90000ms
                 handleLogin();
                 navigate("/admin",{replace: true})
                 // window.location.reload();
