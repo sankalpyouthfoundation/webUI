@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { getConfig } from './env_config/activeConfig';
 import ContactView from './login/admin/ContactView';
+import Competition from './login/admin/Competition';
 
 function App() {
   const [status, setstatus] = useState({
@@ -45,6 +46,7 @@ function App() {
       {/* <Route path= "/register" element={<Register/>}/> */}
       <Route path= "/admin" element={<AdminDashboard/>}/>
       <Route path= "/viewcontacts" element={<ContactView/>}/>
+      <Route path= "/viewcompetitions" element={<Competition/>}/>
     </Routes>
     <Footer webstat = {status}/>
   </>
