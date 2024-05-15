@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import LoginWelcome from '../utils/LoginWelcome';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import NoAccess from '../utils/NoAccess';
 
 const ManageUser = () => {
     const [users, setUsers] = useState([]);
@@ -14,6 +15,7 @@ const ManageUser = () => {
     const [userToUpdate, setUserToUpdate] = useState(null);
 
     const isLoggedIn = useSelector(state => state.login.isLoggedIn);
+    const isAdmin = useSelector(state=> state.login.isAdmin);
     const config = getConfig();
     const navigate = useNavigate();
 
@@ -252,11 +254,7 @@ const ManageUser = () => {
         );
     };
 
-    if (!isLoggedIn) {
-        navigate("/login");
-        return null;
-    }
-
+    if (isLoggedIn && isAdmin) {
     return (
         <>
             <LoginWelcome />
@@ -293,7 +291,14 @@ const ManageUser = () => {
                 )}
             </div>
         </>
-    );
+    );}
+    else if(isLoggedIn){
+        return <NoAccess/>;
+    }
+    else{
+        navigate("/login");
+        return null;
+    }
 };
 
 export default ManageUser;

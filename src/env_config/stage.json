@@ -4,5 +4,6 @@
     "login_endpoint": "https://test-sankalpyouthfoundation-api.onrender.com/api/login",
     "competition_endpoint" : "https://test-sankalpyouthfoundation-api.onrender.com/api/competitions",
     "student_endpoint" : "https://test-sankalpyouthfoundation-api.onrender.com/api/students",
+    "fetchStudent_endpoint": "https://test-sankalpyouthfoundation-api.onrender.com/api/students/fetch",
     "signup_endpoint": "https://test-sankalpyouthfoundation-api.onrender.com/api/signup"
 }

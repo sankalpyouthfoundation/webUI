@@ -14,6 +14,7 @@ import ContactView from './login/admin/ContactView';
 import Competition from './login/admin/Competition';
 import StudentRegistration from './login/admin/StudentRegistration';
 import ManageUser from './login/admin/ManageUser';
+import FindStudent from './login/admin/FindStudent';
 
 function App() {
   const [status, setstatus] = useState({
@@ -45,12 +46,12 @@ function App() {
       <Route path= "*" element={<Home/>}/>
       <Route path= "/" element={<Home/>}/>
       <Route path= "/login" element={<Login/>}/>
-      {/* <Route path= "/register" element={<Register/>}/> */}
-      <Route path= "/admin" element={<AdminDashboard/>}/>
+      <Route path= "/dashboard" element={<AdminDashboard/>}/>
       <Route path= "/viewcontacts" element={<ContactView/>}/>
       <Route path= "/viewcompetitions" element={<Competition/>}/>
       <Route path= "/registration" element={<StudentRegistration/>}/>
       <Route path= "/manageusers" element={<ManageUser/>}/>
+      <Route path= "/findstudent" element={<FindStudent/>}/>
     </Routes>
     <Footer webstat = {status}/>
   </>

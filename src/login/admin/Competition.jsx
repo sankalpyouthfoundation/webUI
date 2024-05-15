@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import LoginWelcome from '../utils/LoginWelcome';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import NoAccess from '../utils/NoAccess';
 
 const Competition = () => {
     const [data, setData] = useState({
@@ -15,7 +16,8 @@ const Competition = () => {
     const [deleteId, setDeleteId] = useState(null);
     const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
     const [isAddFormVisible, setIsAddFormVisible] = useState(false); 
-    const isLoggedIn = useSelector(state => state.login.isLoggedIn); 
+    const isLoggedIn = useSelector(state => state.login.isLoggedIn);
+    const isAdmin = useSelector(state=> state.login.isAdmin); 
 
     const config = getConfig();
     const navigate = useNavigate();
@@ -24,7 +26,7 @@ const Competition = () => {
         axios.get(config.competition_endpoint)
             .then((res) => {
                 setCompetitions(res.data);
-                toast.success("Successfully fetched!")
+                //toast.success("Successfully fetched!")
             })
             .catch((error) => {
                 console.error('Error fetching competitions:', error);
@@ -74,7 +76,7 @@ const Competition = () => {
                 setDeleteId(null);
             });
     };
-    if(isLoggedIn){
+    if(isLoggedIn && isAdmin){
     return (
         <>
         <LoginWelcome/>
@@ -145,6 +147,9 @@ const Competition = () => {
         </div>
         </>
     );}
+    else if(isLoggedIn){
+        return <NoAccess/>;
+    }
     else{
         navigate("/login");
       }
