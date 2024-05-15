@@ -85,7 +85,7 @@ const Footer = (props) => {
             class="w-full p-4 text-center"
             ><span className={props.webstat.css} title={props.webstat.tooltip}></span>
             Designed and Developed by : 
-            <a class="text-whitehite no-underline" href="https://www.facebook.com/itsmemanishtiwari/"
+            <a class="text-whitehite no-underline" href="https://www.instagram.com/itsmemanishtiwari/"
               >&nbsp;<b className="underline">Manish Tiwari</b></a>
           </div>
         </footer>

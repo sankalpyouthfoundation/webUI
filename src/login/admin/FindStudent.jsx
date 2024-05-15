@@ -25,6 +25,7 @@ const FindStudent = () => {
     const handleSearch = (e) => {
         e.preventDefault();
         setLoading(true);
+        setStudents([]);
 
         axios.post(config.fetchStudent_endpoint, data)
             .then((res) => {
@@ -37,6 +38,14 @@ const FindStudent = () => {
                 toast.error("Failed to fetch students!");
                 setLoading(false);
             });
+    };
+
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}-${month}-${year}`;
     };
 
     const StudentTable = ({ students }) => {
@@ -61,7 +70,7 @@ const FindStudent = () => {
                             <tr key={index} className="border-t">
                                 <td className="py-2 px-4">{student.firstname}</td>
                                 <td className="py-2 px-4">{student.lastname}</td>
-                                <td className="py-2 px-4">{student.dateofBirth}</td>
+                                <td className="text-xs">{formatDate(student.dateofBirth)}</td>
                                 <td className="py-2 px-4">{student.fatherName}</td>
                                 <td className="py-2 px-4">{student.contact}</td>
                                 <td className="py-2 px-4">{student.schoolName}</td>
