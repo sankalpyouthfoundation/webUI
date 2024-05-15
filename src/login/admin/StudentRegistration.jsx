@@ -73,6 +73,11 @@ const StudentRegistration = () => {
                 return;
             }
         }
+         // Set the competition property in the data state
+        setData(prevData => ({
+            ...prevData,
+            competition: selectedCompetitionId ? competitionOptions.find(competition => competition.id === selectedCompetitionId) : null
+        }));
 
         setIsPreview(true);
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -87,11 +92,11 @@ const StudentRegistration = () => {
         e.preventDefault();
 
         // Format date of birth to dd-mm-yyyy
-        const formattedDateOfBirth = new Date(data.dateofBirth).toISOString().split('T')[0].split('-').reverse().join('-');
+        // const formattedDateOfBirth = new Date(data.dateofBirth).toISOString().split('T')[0].split('-').reverse().join('-');
 
-        const updatedData = { ...data, dateofBirth: formattedDateOfBirth };
+        // const updatedData = { ...data, dateofBirth: formattedDateOfBirth };
 
-        axios.post(config.student_endpoint, updatedData)
+        axios.post(config.student_endpoint, data)
             .then((res) => {
                 console.log(res.data)
                 if(res.data.status === 'Duplicate Competition'){
@@ -136,7 +141,7 @@ const StudentRegistration = () => {
                     schoolName: fetchedData.schoolName || '',
                     studentClass: fetchedData.studentClass || '',
                     address: fetchedData.address || '',
-                    competition: fetchedData.competitions ? fetchedData.competitions[0] || '' : ''
+                    competition: fetchedData.competitions ? fetchedData.competitions[0] || null : null
                 });
             }).catch((error) => {
                 setLoaderview(false);
@@ -144,7 +149,6 @@ const StudentRegistration = () => {
                 toast.error("Not registered Student!");
             });
     };
-    
 
     if (isLoggedIn) {
         return (
