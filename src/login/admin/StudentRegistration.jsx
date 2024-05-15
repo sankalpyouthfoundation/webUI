@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import LoginWelcome from '../utils/LoginWelcome';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import Loader from '../../utils/Loader';
 
 const StudentRegistration = () => {
     const [data, setData] = useState({
@@ -19,10 +20,11 @@ const StudentRegistration = () => {
         competition: null
     });
 
+    const [loaderview, setLoaderview] = useState(false);
+
     const [competitionOptions, setCompetitionOptions] = useState([]);
     const [isPreview, setIsPreview] = useState(false);
     const isLoggedIn = useSelector(state => state.login.isLoggedIn); 
-
     const config = getConfig();
     const navigate = useNavigate(); 
 
@@ -37,17 +39,28 @@ const StudentRegistration = () => {
     }, [config.competition_endpoint]);
 
     const handleInputChange = (e) => {
-        const newData = { ...data };
-        newData[e.target.name] = e.target.value;
-        setData(newData);
-    };
-
-    const handleCompetitionChange = (e) => {
-        const selectedCompetition = competitionOptions.find(comp => comp.id === e.target.value);
+        const { name, value } = e.target;
         setData(prevData => ({
             ...prevData,
-            competition: selectedCompetition
+            [name]: value
         }));
+    };
+    const [selectedCompetitionId, setSelectedCompetitionId] = useState('');
+
+    // Fetch competition options
+    useEffect(() => {
+        axios.get(config.competition_endpoint)
+            .then((res) => {
+                setCompetitionOptions(res.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching competitions:', error);
+            });
+    }, [config.competition_endpoint]);
+
+    // Handle competition selection
+    const handleCompetitionChange = (e) => {
+        setSelectedCompetitionId(e.target.value);
     };
 
     const handlePreview = (e) => {
@@ -55,16 +68,18 @@ const StudentRegistration = () => {
 
         // Validation: Check if any field is empty
         for (const key in data) {
-            if (!data[key]) {
+            if (!data[key] && key !== 'competition') {
                 toast.error(`Please fill in the ${key.replace(/([A-Z])/g, ' $1').toLowerCase()}`);
                 return;
             }
         }
 
         setIsPreview(true);
+        window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
     const handleEdit = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
         setIsPreview(false);
     };
 
@@ -78,25 +93,58 @@ const StudentRegistration = () => {
 
         axios.post(config.student_endpoint, updatedData)
             .then((res) => {
-                toast.success("Student registered successfully!");
-                setData({
-                    firstname: '',
-                    lastname: '',
-                    dateofBirth: '',
-                    fatherName: '',
-                    contact: '',
-                    schoolName: '',
-                    studentClass: '',
-                    address: '',
-                    competition: null
-                });
+                console.log(res.data)
+                if(res.data.status === 'Duplicate Competition'){
+                    toast.error(res.data.message)
+                }else{
+                    toast.success("Student registered successfully!")
+                    setData({
+                        firstname: '',
+                        lastname: '',
+                        dateofBirth: '',
+                        fatherName: '',
+                        contact: '',
+                        schoolName: '',
+                        studentClass: '',
+                        address: '',
+                        competition: ''
+                    });
                 setIsPreview(false);
+                }
+                
             })
             .catch((error) => {
                 console.error('Error registering student:', error);
                 toast.error("Failed to register student!");
             });
     };
+
+    const fetchData = () => {
+        setLoaderview(true);
+        axios.post(config.fetchStudent_endpoint, { contact: data.contact, firstname: data.firstname })
+            .then((res) => {
+                setLoaderview(false);
+                toast.success("Fetched Successfully!");
+                const fetchedData = res.data[0];
+    
+                setData({
+                    firstname: fetchedData.firstname || '',
+                    lastname: fetchedData.lastname || '',
+                    dateofBirth: fetchedData.dateofBirth || '',
+                    fatherName: fetchedData.fatherName || '',
+                    contact: fetchedData.contact || data.contact,
+                    schoolName: fetchedData.schoolName || '',
+                    studentClass: fetchedData.studentClass || '',
+                    address: fetchedData.address || '',
+                    competition: fetchedData.competitions ? fetchedData.competitions[0] || '' : ''
+                });
+            }).catch((error) => {
+                setLoaderview(false);
+                console.error('Error fetching student:', error);
+                toast.error("Not registered Student!");
+            });
+    };
+    
 
     if (isLoggedIn) {
         return (
@@ -106,7 +154,7 @@ const StudentRegistration = () => {
                     <h5 className="text-xl font-medium text-gray-900 mb-4 text-center">Student Registration</h5>
                     {isPreview ? (
                         <div>
-                            <h5 className="text-lg font-medium text-gray-900 mb-4">Preview</h5>
+                            <h5 className="text-lg font-medium text-center text-green-500 mb-4">Preview</h5>
                             <div className="mb-4">
                                 <strong>First Name: </strong>{data.firstname}
                             </div>
@@ -142,8 +190,16 @@ const StudentRegistration = () => {
                     ) : (
                         <form onSubmit={handlePreview} className="space-y-4">
                             <div>
+                                <label htmlFor="contact" className="block mb-2 text-sm font-medium text-gray-900">Contact (Please enter email/mobile)</label>
+                                <input type="text" name="contact" value={data.contact} onChange={handleInputChange} id="contact" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black" placeholder="Contact" required />
+                            </div>
+                            <div>
                                 <label htmlFor="firstname" className="block mb-2 text-sm font-medium text-gray-900">First Name</label>
                                 <input type="text" name="firstname" value={data.firstname} onChange={handleInputChange} id="firstname" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black" placeholder="First Name" required />
+                            </div>
+                            <div className="p-2">
+                                {loaderview ? <div className="float-center"><Loader/></div> : null}
+                                <button type="button" onClick={fetchData} className='border font-medium bg-green-500 text-white dark:text-black rounded-lg p-1 float-right' >Fetch</button>
                             </div>
                             <div>
                                 <label htmlFor="lastname" className="block mb-2 text-sm font-medium text-gray-900">Last Name</label>
@@ -158,10 +214,6 @@ const StudentRegistration = () => {
                                 <input type="text" name="fatherName" value={data.fatherName} onChange={handleInputChange} id="fatherName" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black" placeholder="Father's Name" required />
                             </div>
                             <div>
-                                <label htmlFor="contact" className="block mb-2 text-sm font-medium text-gray-900">Contact (Please enter email/mobile)</label>
-                                <input type="text" name="contact" value={data.contact} onChange={handleInputChange} id="contact" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black" placeholder="Contact" required />
-                            </div>
-                            <div>
                                 <label htmlFor="schoolName" className="block mb-2 text-sm font-medium text-gray-900">School Name</label>
                                 <input type="text" name="schoolName" value={data.schoolName} onChange={handleInputChange} id="schoolName" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black" placeholder="School Name" required />
                             </div>
@@ -174,14 +226,21 @@ const StudentRegistration = () => {
                                 <input type="text" name="address" value={data.address} onChange={handleInputChange} id="address" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black" placeholder="Address" required />
                             </div>
                             <div>
-                                <label htmlFor="competition" className="block mb-2 text-sm font-medium text-gray-900">Competition</label>
-                                <select name="competition" value={data.competition ? data.competition.id : ''} onChange={handleCompetitionChange} id="competition" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black" required>
-                                    <option value="">Select Competition</option>
-                                    {competitionOptions.map((competition) => (
-                                        <option key={competition.id} value={competition.id}>{competition.title} - {competition.name}</option>
-                                    ))}
-                                </select>
-                            </div>
+                <label htmlFor="competition" className="block mb-2 text-sm font-medium text-gray-900">Competition</label>
+                <select
+                    name="competition"
+                    value={selectedCompetitionId}
+                    onChange={handleCompetitionChange}
+                    id="competition"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black"
+                    required
+                >
+                    <option value="">Select Competition</option>
+                    {competitionOptions.map((competition) => (
+                        <option key={competition.id} value={competition.id}>{competition.title} - {competition.name}</option>
+                    ))}
+                </select>
+            </div>
                             <button type="submit" className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Preview</button>
                         </form>
                     )}

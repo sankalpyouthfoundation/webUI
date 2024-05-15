@@ -87,7 +87,7 @@ function AdminDashboard(props) {
   </div>
 
 </div>
-<center><button onClick={handleLogout} className="text-white m-2 bg-red-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm w-1/2 sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:hidden">log out</button></center>
+<center><button onClick={handleLogout} className="text-white mb-4 bg-red-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm w-1/2 sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:hidden">log out</button></center>
   </>)
   }
   else{

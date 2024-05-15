@@ -25,6 +25,7 @@ const FindStudent = () => {
     const handleSearch = (e) => {
         e.preventDefault();
         setLoading(true);
+        setStudents([]);
 
         axios.post(config.fetchStudent_endpoint, data)
             .then((res) => {
