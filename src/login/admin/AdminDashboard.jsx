@@ -7,13 +7,15 @@ import { useSelector } from 'react-redux';
 function AdminDashboard(props) {
   const navigate = useNavigate();
 
-  const isLoggedIn = useSelector(state => state.login.isLoggedIn); 
+  const isLoggedIn = useSelector(state => state.login.isLoggedIn);
+  const isAdmin = useSelector(state=> state.login.isAdmin);  
   if(isLoggedIn){
     return (
     <>
     <LoginWelcome/>
 
     <div className="flex flex-col md:flex-wrap md:flex-row justify-center items-center mt-0 md:mt-0 mb-16 md:mb-16">
+      {isAdmin ? <>
   <div className="m-2 rounded-lg shadow-lg bg-white w-64">
     <div className="p-6">
       <h5 className="text-gray-900 text-xl font-medium mb-2">
@@ -28,6 +30,17 @@ function AdminDashboard(props) {
       <Link to={"/manageusers"}><button type="button" className=" inline-block px-6 py-2.5 float-right my-3 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
         view</button></Link></div>
   </div>
+
+  <div className="m-2 rounded-lg shadow-lg bg-white w-64">
+    <div className="p-6">
+      <h5 className="text-gray-900 text-xl font-medium mb-2">
+        <center>
+        <svg class="h-24 w-24 text-teal-300"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />  <polyline points="14 2 14 8 20 8" />  <line x1="16" y1="13" x2="8" y2="13" />  <line x1="16" y1="17" x2="8" y2="17" />  <polyline points="10 9 9 9 8 9" /></svg>
+        Competitions</center></h5>
+      <Link to={"/viewcompetitions"}><button type="button" className=" inline-block px-6 py-2.5 float-right my-3 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">view</button>
+      </Link>
+    </div>
+  </div></>: null}
 
   <div className="m-2 rounded-lg shadow-lg bg-white w-64">
     <div className="p-6">
@@ -64,16 +77,6 @@ function AdminDashboard(props) {
     </div>
   </div>
 
-  <div className="m-2 rounded-lg shadow-lg bg-white w-64">
-    <div className="p-6">
-      <h5 className="text-gray-900 text-xl font-medium mb-2">
-        <center>
-        <svg class="h-24 w-24 text-teal-300"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />  <polyline points="14 2 14 8 20 8" />  <line x1="16" y1="13" x2="8" y2="13" />  <line x1="16" y1="17" x2="8" y2="17" />  <polyline points="10 9 9 9 8 9" /></svg>
-        Competitions</center></h5>
-      <Link to={"/viewcompetitions"}><button type="button" className=" inline-block px-6 py-2.5 float-right my-3 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">view</button>
-      </Link>
-    </div>
-  </div>
 </div>
 <center><button onClick={()=>{localStorage.removeItem("syfLoggedInUser");navigate("/login")}} className="text-white m-2 bg-red-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm w-1/2 sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:hidden">log out</button></center>
   </>)

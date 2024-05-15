@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate} from 'react-router-dom';
 import { logout } from '../redux/loginAction';
 
@@ -17,6 +17,7 @@ function ProfileCard(props) {
     }
 
     let data = JSON.parse(localStorage.getItem("syfLoggedInUser"));
+    const isAdmin = useSelector(state=> state.login.isAdmin); 
     
     let [toggle, settoggle] = useState("z-60 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600");
 
@@ -54,15 +55,20 @@ function ProfileCard(props) {
           <div className={toggle}>
           
             <div className="py-3">
-            <Link to={"/admin"}><span className="block text-center text-sm text-blue-600 dark:text-white p-1">{"Admin!"}</span></Link>
+            <Link to={"/dashboard"}><span className="block text-center text-sm text-blue-600 dark:text-white p-1">{data.name}</span></Link>
             </div>
             
             <ul className="py-2" aria-labelledby="user-menu-button">
-              <li>
+              {isAdmin ? <li>
                 <Link to={"/manageusers"} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Manage users</Link>
               </li>
+              : null}
+              {isAdmin ? <li>
+                <Link to={"/viewcompetitions"} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Competitions</Link>
+              </li>
+              : null}
               <li>
-                <Link to={"/registration"} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Add Student</Link>
+                <Link to={"/registration"} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Registration</Link>
               </li>
               <li>
                 <Link to={"/viewcontacts"} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Messages</Link>
