@@ -3,5 +3,6 @@
     "contact_endpoint": "https://prod-sankalpyouthfoundation-api.onrender.com/api/contacts",
     "login_endpoint": "https://prod-sankalpyouthfoundation-api.onrender.com/api/login",
     "competition_endpoint" : "https://prod-sankalpyouthfoundation-api.onrender.com/api/competitions",
-    "student_endpoint" : "https://prod-sankalpyouthfoundation-api.onrender.com/api/students"
+    "student_endpoint" : "https://prod-sankalpyouthfoundation-api.onrender.com/api/students",
+    "signup_endpoint": "https://prod-sankalpyouthfoundation-api.onrender.com/api/signup"
 }

@@ -13,6 +13,7 @@ import { getConfig } from './env_config/activeConfig';
 import ContactView from './login/admin/ContactView';
 import Competition from './login/admin/Competition';
 import StudentRegistration from './login/admin/StudentRegistration';
+import ManageUser from './login/admin/ManageUser';
 
 function App() {
   const [status, setstatus] = useState({
@@ -49,6 +50,7 @@ function App() {
       <Route path= "/viewcontacts" element={<ContactView/>}/>
       <Route path= "/viewcompetitions" element={<Competition/>}/>
       <Route path= "/registration" element={<StudentRegistration/>}/>
+      <Route path= "/manageusers" element={<ManageUser/>}/>
     </Routes>
     <Footer webstat = {status}/>
   </>
