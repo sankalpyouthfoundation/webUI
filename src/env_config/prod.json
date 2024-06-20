@@ -5,5 +5,6 @@
     "competition_endpoint" : "https://prod-sankalpyouthfoundation-api.onrender.com/api/competitions",
     "student_endpoint" : "https://prod-sankalpyouthfoundation-api.onrender.com/api/students",
     "fetchStudent_endpoint" : "https://prod-sankalpyouthfoundation-api.onrender.com/api/students/fetch",
-    "signup_endpoint": "https://prod-sankalpyouthfoundation-api.onrender.com/api/signup"
+    "signup_endpoint": "https://prod-sankalpyouthfoundation-api.onrender.com/api/signup",
+    "forestarmy_endpoint": "https://prod-sankalpyouthfoundation-api.onrender.com/api/forestgreenarmy"
 }

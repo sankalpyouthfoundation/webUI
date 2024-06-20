@@ -15,6 +15,7 @@ import Competition from './login/admin/Competition';
 import StudentRegistration from './login/admin/StudentRegistration';
 import ManageUser from './login/admin/ManageUser';
 import FindStudent from './login/admin/FindStudent';
+import ForestArmyRegistration from './forestarmy/ForestArmyRegistration';
 
 function App() {
   const [status, setstatus] = useState({
@@ -52,6 +53,7 @@ function App() {
       <Route path= "/registration" element={<StudentRegistration/>}/>
       <Route path= "/manageusers" element={<ManageUser/>}/>
       <Route path= "/findstudent" element={<FindStudent/>}/>
+      <Route path= "/forestarmy" element={<ForestArmyRegistration/>}/>
     </Routes>
     <Footer webstat = {status}/>
   </>
