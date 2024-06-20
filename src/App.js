@@ -7,7 +7,7 @@ import Login from './login/Login';
 import Heading from './header/Heading';
 import AdminDashboard from './login/admin/AdminDashboard';
 import { Toaster } from 'react-hot-toast';
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 import axios from 'axios';
 import { getConfig } from './env_config/activeConfig';
 import ContactView from './login/admin/ContactView';
@@ -16,25 +16,20 @@ import StudentRegistration from './login/admin/StudentRegistration';
 import ManageUser from './login/admin/ManageUser';
 import FindStudent from './login/admin/FindStudent';
 import ForestArmyRegistration from './forestarmy/ForestArmyRegistration';
+import { useDispatch } from 'react-redux';
 
 function App() {
-  const [status, setstatus] = useState({
-    css:"flex w-3 h-3 bg-red-500 rounded-full float-right mt-1 md:float-right md:mt-1",
-    tooltip: "Server is down"
-  });
+  const dispatch = useDispatch();
 
   useEffect(()=>{
     const config = getConfig();
     axios.get(config.health_check)
     .then((res)=>{
     if(res.status === 200){
-        setstatus({
-          css: "flex w-3 h-3 bg-green-500 rounded-full float-right mt-1 md:float-right md:mt-1",
-          tooltip: "Server is up"
-      });
+      dispatch({ type: "SERVER_UP" });
     }
   })
-  }, []) 
+  }, [dispatch]) 
   
   return (
   <>
@@ -55,7 +50,7 @@ function App() {
       <Route path= "/findstudent" element={<FindStudent/>}/>
       <Route path= "/forestarmy" element={<ForestArmyRegistration/>}/>
     </Routes>
-    <Footer webstat = {status}/>
+    <Footer/>
   </>
   );
 }
