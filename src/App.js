@@ -48,7 +48,7 @@ function App() {
       <Route path= "/registration" element={<StudentRegistration/>}/>
       <Route path= "/manageusers" element={<ManageUser/>}/>
       <Route path= "/findstudent" element={<FindStudent/>}/>
-      <Route path= "/forestarmy" element={<ForestArmyRegistration/>}/>
+      <Route path= "/pahadgreenarmy" element={<ForestArmyRegistration/>}/>
     </Routes>
     <Footer/>
   </>

@@ -62,7 +62,7 @@ function NavMenu(props) {
         <a href="#donate" className="text-gray-900 dark:text-black hover:underline" onClick={handleLinkClick}>Donate us</a>
       </li>
       <li>
-        <Link to={"/forestarmy"}  className="text-gray-900 dark:text-black hover:underline" onClick={handleLinkClick}>ForestGreen Army</Link>
+        <Link to={"/pahadgreenarmy"}  className="text-gray-900 dark:text-black hover:underline" onClick={handleLinkClick}>Pahad Green Army</Link>
       </li>
       <li>
       {isLoggedIn ? 
