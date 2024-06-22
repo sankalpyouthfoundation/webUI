@@ -11,9 +11,9 @@ function ForestArmyContent() {
   <p className="text-lg md:text-lg lg:text-lg font-serif">
     Welcome to Pahad Green Army, where we're dedicated to planting 20,000 trees in our local area. By joining our team, you contribute directly to improving air quality, creating wildlife habitats, and enhancing community beauty. Whether you're a seasoned environmentalist or new to eco-friendly initiatives, there's a place for you. Our commitment to transparency ensures every tree planted is part of a carefully planned effort for long-term sustainability. 
 
-    Joining Pahad Green Army is simple – register as a volunteer and participate in our tree planting events. Together, we'll realize our vision of a greener, healthier future. Every tree counts, and your involvement makes a significant impact. Together, we can inspire others and leave a legacy of environmental stewardship. 
+    Joining Pahad Green Army is simple – take membership and participate in our tree planting events. Together, we'll realize our vision of a greener, healthier future. Every tree counts, and your involvement makes a significant impact. Together, we can inspire others and leave a legacy of environmental stewardship. 
 
-    Take the first step towards making a meaningful impact. Register now and be part of Pahad Green Army’s mission to create a sustainable environment for generations to come.
+    Take the first step towards making a meaningful impact. Take membership now and be part of Pahad Green Army’s mission to create a sustainable environment for generations to come.
   </p>
   <p className="text-lg md:text-lg lg:text-lg font-serif text-blue-600 mt-5">
   Take membership today and become a part of something bigger!<br/>
