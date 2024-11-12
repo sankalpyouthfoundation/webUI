@@ -40,13 +40,13 @@ const Carousel = () => {
         />
       ))}
       <button
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-1 rounded-full"
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white px-3 py-1 rounded-full"
         onClick={goToPrevious}
       >
         <svg class="md:h-8 md:w-8 w-6 h-6 text-white"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="11 7 6 12 11 17" />  <polyline points="17 7 12 12 17 17" /></svg>
       </button>
       <button
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-1 rounded-full"
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white px-3 py-1 rounded-full"
         onClick={goToNext}
       >
         <svg class="md:h-8 md:w-8 w-6 h-6 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <polyline points="13 17 18 12 13 7" />  <polyline points="6 17 11 12 6 7" /></svg>
