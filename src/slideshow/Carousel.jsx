@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const images = [
+    'https://res.cloudinary.com/dvfarxhig/image/upload/v1731383208/syf/12x10_Ghoda_laibrary_o6iz1c.jpg', //January Event
     'https://res.cloudinary.com/dvfarxhig/image/upload/v1709459511/syf/IMG20230827110205_hjm13y.jpg',
     'https://res.cloudinary.com/dvfarxhig/image/upload/v1709459470/syf/IMG_20230813_120132_eggb7a.jpg',
     'https://res.cloudinary.com/dvfarxhig/image/upload/v1709459469/syf/IMG_20230813_120331_clzktq.jpg',
