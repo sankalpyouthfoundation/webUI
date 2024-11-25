@@ -44,14 +44,17 @@ function NavMenu(props) {
   return (
     <ul className={`${props.showMenu ? 'block' : 'hidden'} md:flex flex-row mt-0 md:space-x-8 text-lg md:text-sm font-medium text-center bg-gray-50 dark:bg-gray-50 py-3 px-4 mx-auto`}>
       <li>
-        <a href='#initiative' className="text-gray-900 dark:text-black hover:underline" onClick={handleLinkClick}>Our Initiatives</a>
+        <a href="/" className="text-gray-900 dark:text-black hover:underline" onClick={handleLinkClick}>Home</a>
       </li>
       <li>
+        <a href='#initiative' className="text-gray-900 dark:text-black hover:underline" onClick={handleLinkClick}>Our Initiatives</a>
+      </li>
+      {/* <li>
         <a href="/" className="text-gray-900 dark:text-black hover:underline" onClick={handleLinkClick}>Gallery</a>
       </li>
       <li>
         <a href="#team" className="text-gray-900 dark:text-black hover:underline" onClick={handleLinkClick}>Our Team</a>
-      </li>
+      </li> */}
       <li>
         <a href="#about" className="text-gray-900 dark:text-black hover:underline" onClick={handleLinkClick}>About us</a>
       </li>
