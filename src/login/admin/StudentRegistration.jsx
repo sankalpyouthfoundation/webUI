@@ -175,10 +175,10 @@ const StudentRegistration = () => {
                                 <strong>Contact: </strong>{data.contact}
                             </div>
                             <div className="mb-4">
-                                <strong>School Name: </strong>{data.schoolName}
+                                <strong>School/Insititue/College Name: </strong>{data.schoolName}
                             </div>
                             <div className="mb-4">
-                                <strong>Class: </strong>{data.studentClass}
+                                <strong>Class/Course: </strong>{data.studentClass}
                             </div>
                             <div className="mb-4">
                                 <strong>Address: </strong>{data.address}
@@ -218,11 +218,11 @@ const StudentRegistration = () => {
                                 <input type="text" name="fatherName" value={data.fatherName} onChange={handleInputChange} id="fatherName" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black" placeholder="Father's Name" required />
                             </div>
                             <div>
-                                <label htmlFor="schoolName" className="block mb-2 text-sm font-medium text-gray-900">School Name</label>
+                                <label htmlFor="schoolName" className="block mb-2 text-sm font-medium text-gray-900">School/Insititue/College Name</label>
                                 <input type="text" name="schoolName" value={data.schoolName} onChange={handleInputChange} id="schoolName" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black" placeholder="School Name" required />
                             </div>
                             <div>
-                                <label htmlFor="studentClass" className="block mb-2 text-sm font-medium text-gray-900">Class (NUR, UKG, LKG, 1, 2, 3, 4, 5, 6, 7, 8, 9)</label>
+                                <label htmlFor="studentClass" className="block mb-2 text-sm font-medium text-gray-900">Class/Course</label>
                                 <input type="text" name="studentClass" value={data.studentClass} onChange={handleInputChange} id="studentClass" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black" placeholder="Class" required />
                             </div>
                             <div>
