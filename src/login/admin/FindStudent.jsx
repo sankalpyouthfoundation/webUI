@@ -35,7 +35,7 @@ const FindStudent = () => {
             })
             .catch((error) => {
                 console.error('Error fetching students:', error);
-                toast.error("Failed to fetch students!");
+                toast.error("No record found!");
                 setLoading(false);
             });
     };
