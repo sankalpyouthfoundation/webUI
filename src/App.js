@@ -17,6 +17,7 @@ import ManageUser from './login/admin/ManageUser';
 import FindStudent from './login/admin/FindStudent';
 import ForestArmyRegistration from './forestarmy/ForestArmyRegistration';
 import { useDispatch } from 'react-redux';
+import Attendance from './login/admin/Attendance';
 
 function App() {
   const dispatch = useDispatch();
@@ -46,6 +47,7 @@ function App() {
       <Route path= "/viewcontacts" element={<ContactView/>}/>
       <Route path= "/viewcompetitions" element={<Competition/>}/>
       <Route path= "/registration" element={<StudentRegistration/>}/>
+      <Route path= "/attendance" element={<Attendance/>}/>
       <Route path= "/manageusers" element={<ManageUser/>}/>
       <Route path= "/findstudent" element={<FindStudent/>}/>
       <Route path= "/pahadgreenarmy" element={<ForestArmyRegistration/>}/>

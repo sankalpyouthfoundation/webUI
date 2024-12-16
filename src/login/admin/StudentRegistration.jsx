@@ -203,7 +203,7 @@ const StudentRegistration = () => {
                             </div>
                             <div className="p-2">
                                 {loaderview ? <div className="float-center"><Loader/></div> : null}
-                                <button type="button" onClick={fetchData} className='border font-medium bg-green-500 text-white dark:text-black rounded-lg p-1 float-right' >Fetch</button>
+                                <button type="button" onClick={fetchData} className="w-full text-white bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:bg-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mt-2 ">Fetch</button>
                             </div>
                             <div>
                                 <label htmlFor="lastname" className="block mb-2 text-sm font-medium text-gray-900">Last Name</label>
