@@ -34,7 +34,7 @@ const Footer = () => {
               </a>
         
               <a
-                href="#!"
+                href="https://x.com/iShubhamBadhani"
                 type="button"
                 class="m-1 h-9 w-9 rounded-full border-2  uppercase leading-normal ransition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
                 data-te-ripple-init
@@ -50,7 +50,7 @@ const Footer = () => {
               </a>
         
               <a
-                href="#!"
+                href="https://www.instagram.com/sankalp.youth.foundation/"
                 type="button"
                 class="m-1 h-9 w-9 rounded-full border-2  uppercase leading-normal  transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
                 data-te-ripple-init
@@ -66,7 +66,7 @@ const Footer = () => {
               </a>
         
               <a
-                href="#!"
+                href="https://www.linkedin.com/in/shubham-badhani-02583b207/"
                 type="button"
                 class="m-1 h-9 w-9 rounded-full border-2 uppercase leading-normal  transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
                 data-te-ripple-init

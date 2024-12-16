@@ -128,13 +128,10 @@ const Attendance = () => {
             <>
                 <LoginWelcome />
                 <div className="p-4 m-5 w-full max-w-sm mx-auto bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:border-gray-200">
-                    <h5 className="text-xl font-medium text-gray-900 mb-4 text-center">Student Attendance</h5>
+                    <h5 className="text-xl font-medium text-gray-900 mb-4 text-center">Competition Attendance</h5>
                     {isPreview ? (
                         <div>
                             <h5 className="text-lg font-medium text-center text-green-500 mb-4">Preview</h5>
-                            <div className="mb-4">
-                                <strong>Student ID: </strong>{data.studentRecordId}
-                            </div>
                             <div className="mb-4">
                                 <strong>Full Name: </strong>{`${data.firstname} ${data.lastname}`}
                             </div>
